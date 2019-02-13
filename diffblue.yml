@@ -1,0 +1,322 @@
+# Tested on Deeptest release 1.12.0
+cbmcArguments:
+  java-generate-no-comments: true
+phases:
+-
+  timeout: 60
+  cbmcArguments:
+    max-nondet-array-length: 10
+    unwind: 1
+    string-non-empty: true
+    java-assume-inputs-non-null: true
+-
+  timeout: 60
+  cbmcArguments:
+    classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 10
+    unwind: 1
+-
+  timeout: 60
+  cbmcArguments:
+    classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 20
+    unwind: 2
+    string-non-empty: true
+    java-assume-inputs-non-null: true
+-
+  timeout: 60
+  cbmcArguments:
+    classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 20
+    unwind: 2
+-
+  timeout: 60
+  cbmcArguments:
+    classpath: '/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 30
+    max-nondet-string-length: 10
+    unwind: 3
+    string-non-empty: true
+    java-assume-inputs-non-null: true
+-
+  timeout: 60
+  cbmcArguments:
+    classpath: '/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 30
+    max-nondet-string-length: 10
+    unwind: 3
+-
+  timeout: 120
+  cbmcArguments:
+    classpath: '/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 30
+    max-nondet-string-length: 10
+    unwind: 4
+    load-containing-class-only: true
+    string-non-empty: true
+    java-assume-inputs-non-null: true
+-
+  timeout: 120
+  cbmcArguments:
+    classpath: '/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 50
+    max-nondet-string-length: 50
+    unwind: 4
+    load-containing-class-only: true
+-
+  timeout: 120
+  cbmcArguments:
+    classpath: '/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 130
+    max-nondet-string-length: 110
+    unwind: 10
+    string-non-empty: true
+    java-assume-inputs-non-null: true
+-
+  timeout: 120
+  cbmcArguments:
+    classpath: '/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 300
+    max-nondet-string-length: 100
+    unwind: 10
+units:
+  - target:
+    - dir: pitest-entry/target/classes
+      file: org/pitest/mutationtest/build/intercept/javafeatures/TryWithResourcesMethodVisitor.class
+      sourceDir: pitest-entry/src/main/java
+      sourceFile: org/pitest/mutationtest/build/intercept/javafeatures/TryWithResourcesMethodVisitor.java
+    # Child of TryWithResourcesMethodVisitor.class
+    - dir: pitest/target/classes
+      file: org/pitest/bytecode/ASMVersion.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/bytecode/ASMVersion.java
+  - target:
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/mutators/rv/UOI4Mutator.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/mutators/rv/UOI4Mutator.java
+    # Child of UOI4Mutator.class
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/MutationIdentifier.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/MutationIdentifier.java
+    # Child of UOI4Mutator.class
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/MethodInfo.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/MethodInfo.java
+    # Child of UOI4Mutator.class
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/MethodMutatorFactory.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/MethodMutatorFactory.java
+    # Child of UOI4Mutator.class
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/MutationContext.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/MutationContext.java
+  - target:
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/mutators/rv/UOI3Mutator.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/mutators/rv/UOI3Mutator.java
+  - target:
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/mutators/rv/UOI2Mutator.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/mutators/rv/UOI2Mutator.java
+  - target:
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/mutators/rv/UOI1Mutator.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/mutators/rv/UOI1Mutator.java
+  - target:
+    - dir: pitest-maven/target/classes
+      file: org/pitest/maven/report/generator/HTMLReportGenerator.class
+      sourceDir: pitest-maven/src/main/java
+      sourceFile: org/pitest/maven/report/generator/HTMLReportGenerator.java
+  - target:
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/mutators/rv/OBBN3Mutator.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/mutators/rv/OBBN3Mutator.java
+  - target:
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/mutators/rv/ABSMutator.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/mutators/rv/ABSMutator.java
+  - target:
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/mutators/rv/AOD2Mutator.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/mutators/rv/AOD2Mutator.java
+  - target:
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/mutators/rv/OBBN2Mutator.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/mutators/rv/OBBN2Mutator.java
+  - target:
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/mutators/rv/AOD1Mutator.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/mutators/rv/AOD1Mutator.java
+  - target:
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/mutators/rv/AbstractCRCRVisitor.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/mutators/rv/AbstractCRCRVisitor.java
+    # Child of AbstractCRCRVisitor.class
+    - dir: pitest/target/classes
+      file: org/pitest/util/PitError.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/util/PitError.java
+  - target:
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/mutators/rv/CRCR4Mutator.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/mutators/rv/CRCR4Mutator.java
+  - target:
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/mutators/rv/CRCR2Mutator.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/mutators/rv/CRCR2Mutator.java
+  - target:
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/mutators/rv/CRCR3Mutator.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/mutators/rv/CRCR3Mutator.java
+  - target:
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/mutators/rv/CRCR1Mutator.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/mutators/rv/CRCR1Mutator.java
+  - target:
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/mutators/rv/CRCR6Mutator.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/mutators/rv/CRCR6Mutator.java
+  - target:
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/mutators/rv/CRCR5Mutator.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/mutators/rv/CRCR5Mutator.java
+  - target:
+    - dir: pitest-html-report/target/classes
+      file: org/pitest/mutationtest/report/html/ResultComparator.class
+      sourceDir: pitest-html-report/src/main/java
+      sourceFile: org/pitest/mutationtest/report/html/ResultComparator.java
+    # Child of ResultComparator.class
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/DetectionStatus.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/DetectionStatus.java
+    # Child of ResultComparator.class
+    - dir: pitest-entry/target/classes
+      file: org/pitest/mutationtest/MutationResult.class
+      sourceDir: pitest-entry/src/main/java
+      sourceFile: org/pitest/mutationtest/MutationResult.java
+  - target:
+    - dir: pitest-maven/target/classes
+      file: org/pitest/maven/report/HelpMojo.class
+      sourceDir: pitest-maven/target/generated-sources/plugin
+      sourceFile: org/pitest/maven/report/HelpMojo.java
+  - target:
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/mutators/rv/OBBN1Mutator.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/mutators/rv/OBBN1Mutator.java
+    # Child of OBBN1Mutator.class
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/AbstractInsnMutator.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/AbstractInsnMutator.java
+    # Child of OBBN1Mutator.class
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/InsnSubstitution.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/InsnSubstitution.java
+    # Child of OBBN1Mutator.class
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/gregor/ZeroOperandMutation.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/gregor/ZeroOperandMutation.java
+  - target:
+    - dir: pitest-entry/target/classes
+      file: org/pitest/mutationtest/build/intercept/timeout/InfiniteForLoopFilter.class
+      sourceDir: pitest-entry/src/main/java
+      sourceFile: org/pitest/mutationtest/build/intercept/timeout/InfiniteForLoopFilter.java
+    # Child of InfiniteForLoopFilter.class
+    - dir: pitest-entry/target/classes
+      file: org/pitest/bytecode/analysis/MethodTree.class
+      sourceDir: pitest-entry/src/main/java
+      sourceFile: org/pitest/bytecode/analysis/MethodTree.java
+    # Child of InfiniteForLoopFilter.class
+    - dir: pitest/target/classes
+      file: org/pitest/mutationtest/engine/MutationDetails.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/mutationtest/engine/MutationDetails.java
+    # Child of InfiniteForLoopFilter.class
+    - dir: pitest/target/classes
+      file: org/pitest/sequence/Match.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/sequence/Match.java
+    # Child of InfiniteForLoopFilter.class
+    - dir: pitest/target/classes
+      file: org/pitest/sequence/QueryParams.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/sequence/QueryParams.java
+    # Child of InfiniteForLoopFilter.class
+    - dir: pitest/target/classes
+      file: org/pitest/sequence/QueryStart.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/sequence/QueryStart.java
+    # Child of InfiniteForLoopFilter.class
+    - dir: pitest/target/classes
+      file: org/pitest/sequence/SequenceMatcher.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/sequence/SequenceMatcher.java
+    # Child of InfiniteForLoopFilter.class
+    - dir: pitest/target/classes
+      file: org/pitest/sequence/SequenceQuery.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/sequence/SequenceQuery.java
+    # Child of InfiniteForLoopFilter.class
+    - dir: pitest/target/classes
+      file: org/pitest/sequence/Slot.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/sequence/Slot.java
+  - target:
+    - dir: pitest-entry/target/classes
+      file: org/pitest/mutationtest/build/DefaultTestPrioritiser.class
+      sourceDir: pitest-entry/src/main/java
+      sourceFile: org/pitest/mutationtest/build/DefaultTestPrioritiser.java
+    # Child of DefaultTestPrioritiser.class
+    - dir: pitest/target/classes
+      file: org/pitest/classinfo/ClassName.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/classinfo/ClassName.java
+    # Child of DefaultTestPrioritiser.class
+    - dir: pitest-entry/target/classes
+      file: org/pitest/coverage/CoverageDatabase.class
+      sourceDir: pitest-entry/src/main/java
+      sourceFile: org/pitest/coverage/CoverageDatabase.java
+    # Child of DefaultTestPrioritiser.class
+    - dir: pitest/target/classes
+      file: org/pitest/coverage/TestInfo.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/coverage/TestInfo.java
+    # Child of DefaultTestPrioritiser.class
+    - dir: pitest/target/classes
+      file: org/pitest/functional/FCollection.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/functional/FCollection.java
+    # Child of DefaultTestPrioritiser.class
+    - dir: pitest/target/classes
+      file: org/pitest/functional/prelude/Prelude.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/functional/prelude/Prelude.java
+    # Child of DefaultTestPrioritiser.class
+    - dir: pitest/target/classes
+      file: org/pitest/util/Log.class
+      sourceDir: pitest/src/main/java
+      sourceFile: org/pitest/util/Log.java
